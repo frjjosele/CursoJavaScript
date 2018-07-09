@@ -1,0 +1,160 @@
+console.time("nombre del time");
+console.timeEnd("nombre del time");
+
+console.warn("cadena de texto");//muestra el mensajes tipo warning
+console.error("mensaje de error");//muestra el mensaje como si fuera un error
+
+----------------
+En la consola si el valor de una varaible es negro, significa que es una cadena.
+Si el valor en la consola es azul es porque es un numero.
+
+
+-------------------------------------------
+//NOmbre de las variables:
+    -no puede empezar con un numero: 99dias->error
+    -no puede tener caracteres especiales al inicio: *nina-> error
+
+    -primerNombre='Juan'; //camelcase (La mejor de todas)
+    -var primer_nombre='Juan'; //undercore
+    -var PrimerNombre='Juan'; //pascal case
+    -var primernombre='Juan'; Esta es la peor
+
+    Las varaibles pueden empezar por: $ o por _
+    var $nombre="Jesus";
+    var _nombre="JEsus";
+---------------------------------------------
+
+
+var let const
+
+let producto="libro";
+let producto="caja";
+
+Esto produce un error no te permite redeclarar la misma varible. Tendriamos que hacer esto para que funcione:
+
+let producto="libro";
+producto="caja";
+
+Esto no da error.
+
+Podemos hacer lo mismo con var y no nos daria error ya que var si nos permite redeclarar.
+
+No hace falta inicializar las variable scon let o var.
+let producto;
+producto="caja";
+
+const: se usa cuando el valor no va a cambiar en la ejecucion del programa.
+siemrpe hay que iniciar la variable que declaremos con const.
+
+
+-------------------------------------------------
+Escapar las comillas: es cuando queremos que una cadena de texto muestre un mensaje entre comillas: Y entonces dije 'Buenos dias!!';
+Para hacer ese mensaje escapamos las comillas:
+let mensaje='Y entonces dije \'Buenos dias!!!\' ';
+
+Tambien se puede hacer con comillas dobles y no necesitamos escapar nada:
+let mensaje="Y entonces dije \'Buenos dias!!!\' ";
+
+Nos dara error si hacemos lo siguiente:
+let mensaje='Y entonces dije 'Buenos dias!!!' '; --> este error se produce cuando ponemos comillas side un mismo tipo denro de otras comillas del mismo tipo.
+-----------------------------------------------
+Metodos de String
+
+toUpperCase()
+
+slice(2,4)
+slice(-5)
+slice(10,-5)
+
+split(" ")
+
+indexOf('va')
+
+repeat(-10)
+
+includes('php')
+
+let tecnologia="Me gusta, aprender Javascript";
+
+console.log(tecnologia.toUpperCase());
+//ME GUSTA APRENDER JAVASCRIPT
+console.log(tecnologia.substring(0,1));//M
+console.log(tecnologia.substring(0,11));//Me gusta ap
+
+
+console.log(tecnologia.slice(2,4));//g
+console.log(tecnologia.slice(-5));//cript-> cuenta desde el final y solo  letras
+console.log(tecnologia.slice(10,-5));//prender Javas--> cuanta desde la letra numero  del final hasta 10 letras siguientes
+
+
+console.log(tecnologia.split(" "));//Array [ "Me", "gusta,", "aprender", "Javascript" ]--> convierte en un array a partir de un separador como es el espacio
+
+console.log(tecnologia.indexOf('va'));//21 --> devuelve la 1º posicion de la cadena indicada
+console.log(tecnologia.indexOf('vacano'));//-1 --> devuelve -1 si no se encuentra la cadena
+
+
+console.log(tecnologia.repeat(10));//Me gusta, aprender JavascriptMe gusta, aprender JavascriptMe gusta, aprender JavascriptMe gusta, aprender JavascriptMe gusta, aprender JavascriptMe gusta, aprender JavascriptMe gusta, aprender JavascriptMe gusta, aprender JavascriptMe gusta, aprender JavascriptMe gusta, aprender Javascript  --> repite la cadena el numero de veces indicada
+
+console.log(tecnologia.repeat(-10)); //Da un error-->RangeError: repeat count must be non-negative
+
+console.log(tecnologia.includes('php')); //false-> devuelve false si la cadena no se encentra en el texto
+console.log(tecnologia.includes('va')); //duvuelve true si hay una cadena igual que la indicada en el texto
+
+----------------------------------------------
+Numeros en Javascript
+
+let resultado;
+
+
+
+
+resultado=Math.PI;
+
+resultado=Math.round(2.4); //2 -->Redondea al entero mas cercano 
+
+resultado=Math.floor(2.8); //2 -->Redondea al entero inferior mas cercano
+
+resultado=Math.ceil(2.1); //3 -->Redondea al enterio superior mas cercano
+
+resultado=Math.abs(-3); //3 valor absoluto
+
+resultado=Math.min(3,6,8,1,-6,0); //-6-->Devuelve el valor mas pequeño del array
+
+resultado=Math.max(3,6,8,1,-6,0); //8 -->Devulve el valor mas grande e un array
+
+resultado=Math.random();//0.03715101385965769-->numero aleatorio entre 0 y 1
+
+
+--------------------------------------------------
+Tipos de datos
+
+Js: es un lengiaje tipo dinamico, es decir que no tiene necesidad de delcarar el tipo de dato.
+Los datos en JS se guardan en el valor de la variable y no en la variable
+
+let valor;
+
+typeof(valor);
+
+---------------Tipos de datos primitivos-------
+Todos los numeros son de tipo number.
+
+Todas las cadenas son de tipo String.
+
+Tipo de dato null. --> en un objeto.
+
+undefined--> es por ejemplo cuando la variable no esta definida.
+
+
+tipo symbol.
+
+valor=Symbol('Simbolo'); -->symbol
+
+-----------------Tipos de datos objetos o de referencia------
+
+valor=[1,2,1,3]; --> es un arreglo. Es un tipo de objetos
+
+valor={1,2,3,4} --> es un objeto. Es un tipo de objeto.
+
+valor new Date():--> es un tipo objeto
+
+

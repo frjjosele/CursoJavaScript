@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>HEEEEE</h1>
+        <h2>Holaaa</h2>
+    </header>
+    <SCRIPT>
+        var divDiv=document.createElement('div');
+        divDiv.id="respuesta";
+        document.querySelector('body').appendChild(divDiv);
+        
+        var xhr=new XMLHttpRequest();
+
+        function Manejarrespuesta(){
+            if (this.readyState === 4 && this.status === 200) {
+var respuesta = JSON.parse(this.responseText);
+var respuestaHTML = document.querySelector('#respuesta');
+var tpl = '';
+respuesta.forEach(function (elem) {
+tpl += '<a href="' + elem.url + '">'
++ '<img src="' + elem.thumbnailUrl + '"/>',
++ '</a>',
++ '<br/>',
++ '<span>' + elem.title + '</span>';
+});
+respuestaHTML.innerHTML = tpl;
+}
+
+        }
+
+        xhr.onLoad=Manejarrespuesta;
+        xhr.open('GET','http://jsonplaceholder.typicode.com/photos',true);
+        xhr.send();
+    </SCRIPT>
+</body>
+</html>
