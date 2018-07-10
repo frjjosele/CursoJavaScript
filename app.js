@@ -13,7 +13,7 @@ const numero1=30,
 
 let resultado;
 
-resultado=numero1+numero2;
+
 
 
 resultado=Math.PI;
