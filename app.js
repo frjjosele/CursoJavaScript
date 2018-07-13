@@ -1,36 +1,52 @@
-// const numero1=30;
-// const numero2=20;
-// const numero3=2.20;
-// const numero4=.1020;
-// const numero5=-3;
-
-//Otra forma de declararlos
-const numero1=30,
- numero2=20,
- numero3=2.20,
- numero4=.1020,
- numero5=-3;
-
-let resultado;
+const numero1="50",
+      numero2=10,
+      numero3="tres";
 
 
+console.log(numero1+numero2);
 
 
-resultado=Math.PI;
-console.log(resultado);
-resultado=Math.round(2.4); //2 -->Redondea al entero mas cercano 
-console.log(resultado);
-resultado=Math.floor(2.8); //2 -->Redondea al entero inferior mas cercano
-console.log(resultado);
-resultado=Math.ceil(2.1); //3 -->Redondea al enterio superior mas cercano
-console.log(resultado);
-resultado=Math.abs(-3); //3 valor absoluto
-console.log(resultado);
-resultado=Math.min(3,6,8,1,-6,0); //-6-->Devuelve el valor mas pequeño del array
-console.log(resultado);
-resultado=Math.max(3,6,8,1,-6,0); //8 -->Devulve el valor mas grande e un array
-console.log(resultado);
-resultado=Math.random();//0.03715101385965769-->numero aleatorio entre 0 y 1
-console.log(resultado);
+//Principal motivo para pasar de un string a un numero es por ejemplo esto:
+console.log(numero1+numero2);// resultado: 5010
+
+//Tenemos que pasarlo a un entero: parseInt()
+
+console.log(parseInt(numero1)+numero2); //Resultado correcto: 60
+
+    //Por el contrario en la resta no hace falta
+    console.log(numero1-numero2); //Resultado correcto
+
+    let dato;
+    dato=Number("20");
+
+    console.log(typeof(dato));
+    
+    dato=20.0454512121
+
+    console.log(dato.toFixed(2));//20.05
+    console.log();
 
 
+
+    let cp;
+
+    cp=90210;
+    //Los datos tipo number no se pueden contar el numero de digitos
+    console.log(cp.length); //resultado:  undefined
+
+    let dato="4"+"4";
+      console.log(dato.length);//resultado:2 , porque contiene 2 letras
+
+      dato=true; //booleano
+      console.log(dato.length);//resultado: undefined
+
+      //Convirtiendo a tipo string: String()
+
+      console.log(String(dato).length);//Resultado: 4;
+
+      //toString();
+      dato=555;
+      dato=dato.toString();
+      console.log(dato.length);//resultado: 3
+
+      Ya es un string por lo tanto puede usar todos los metodos de los string
