@@ -221,3 +221,247 @@ let cp;
       console.log(dato.length);//resultado: 3
 
       Ya es un string por lo tanto puede usar todos los metodos de los string
+
+
+
+
+--------------------------------------
+Template Literals o string Template  ${variable}
+const producto1="Pizza",
+      precio1=30,
+      producto2="Hamburguesa",
+      precio2=40;
+
+//version antigua, mezcla html con las variables muchos signos +, se ve todo muy feo
+let html;
+
+html="<ul>"+
+    "<li>Orden: "+producto1+ "</li>"+
+    "<li>Precio: "+precio1+ "</li>"+
+    "<li>Orden: "+producto2+"</li>"+
+    "<li>Precio: "+precio2+"</li>"+
+    "</ul>";
+
+    document.getElementById("app").innerHTML=html;
+
+//usando string Template
+html=`
+        <ul>
+            <li>Orden: ${producto1}</li>
+            <li>Precio: ${precio1}</li>
+            <li>Orden: ${producto2}</li>
+            <li>Precio: ${precio2}</li>
+            <li>Precio: ${total(precio1,precio2)}</li>
+        </ul>
+
+`;
+
+
+function total(precio1,precio2){
+    return precio1+precio2
+}
+
+
+
+--------------------------
+Arreglos en JS y sus metodos
+
+vector.sort();
+vector.splice();
+vector.split();
+array.isArray();
+vector.push();
+vector.pop();
+vector.concat(vector2);
+.
+.
+.
+.
+.
+.
+
+
+const numeros=[10,20,30,40,50];
+
+console.log(numeros);
+
+//Array de String (metodo alternativo) Es decir no hace falta hacerlo asi para crear un array destring
+
+const meses= new Array("Enenero","Febrero","Marzo");
+
+
+//Arreglo mezclado
+
+const mezclado=["HOla",10,20];
+
+
+//Método para saber si es un arreglo
+      //Array.isArray(nombre_var);
+let hola=5;
+console.log(Array.isArray(mezclado));//resultado: true
+
+console.log(hola);//resultado: false
+
+
+//Añadir elemento al final del arreglo: array.push(elemento)
+
+console.log(meses.push("Abril")); //devuelve el tamaño del vector si se ha insertado correctamente
+
+
+//Encontrar un elemento del arreglo
+console.log(meses.indexOf("Abril"));//devuelve la primera posicion del elemento
+
+//Añadir al inico del arreglo
+console.log(meses.unshift("Mes 0 1")); //Devuelve el tamaño del array. Aunque tenga espacios hemos insertado un string pero con espacios
+
+
+//Eliminar elemento final del array
+console.log(meses.pop()); //retorna el elemento elimnado
+
+//eliminar el primer elemento
+
+console.log(meses.shift());//Retorna el elemento eliminado
+
+//Quitar elemento o elementos a partir de cualquier posicion
+
+meses.splice(2,1);//A partir de la posicion 2 eliminamos 1 elemento.
+
+//Revertir el array
+meses.reverse();
+
+//Concatenar arreglos:
+let arreglo1=[1,2,3],
+arreglo2=[9,8,7];
+
+console.log(arreglo1.concat(arreglo2)); //resultado: devuelve un array concatenado, pero no modifica ninguno de los dos arrays.
+
+//ordenar alfabeticamente arreglo de string. Mo funciona correctamente con los arreglos numericos
+meses.push("Marzo","Abril","Mayo","Junio");
+console.log(meses.sort());//Resultado: modifica los valores del array y los ordena alfabeticamente
+
+arreglo1.sort(function(x,y){
+      return x-y;
+});
+
+console.log(arreglo1);
+
+
+
+
+-------------------------------------------------
+Variable const en objetos y arreglos
+-------------------------------------------------
+//Lo que no podemos hacer con un array const es reasignar los valores en el vector es decir:
+numeros=[8,9,10]; // resutlado: TypeError: invalid assignment to const `numeros'
+
+const numeros=[1,2,3];
+
+console.log(numeros);//resultado: Array(3) [ 1, 2, 3 ]
+
+//Podemos modificar los elementos, añadir e incluso elimnar
+
+numeros.push(5);
+console.log(numeros); //resultado: Array(4) [ 1, 2, 3, 5 ]
+
+numeros.pop();
+console.log(numeros); //resultado: Array(4) [ 1, 2, 3 ]
+
+numeros[0]=9;
+console.log(numeros);//resultado:Array(4) [9, 2, 3 ]
+
+
+
+-----------------------------------------------
+Objetos en Javascript
+--------------------------------------------
+
+
+/crear Objeto
+
+const persona={
+      nombre: "Miguel",
+      apellido: "Martinez",
+      profesion: "Diseñador grafico",
+      email: "correo@corre.com",
+      edad: 20,
+      musica:["trance","rock","Rap"],
+      hogar:{
+            ciudad: "Cordoba",
+            pais:"España"
+      },
+
+      nacimiento: function(){
+            return new Date().getFullYear()-this.edad;
+            //this.edad accedemos a la edad que pusimos dentro del objeto
+      }
+}
+
+console.log(persona); //resultado: Object { nombre: "Miguel", apellido: "Martinez", profesion: "Diseñador grafico", email: "correo@corre.com" }
+
+//Acceder a los valores dentro de un objeto:
+console.log(persona.nombre); //reultado: Miguel
+
+console.log(persona.musica);//reusltado: Array(3) [ "trance", "rock", "Rap" ]
+
+//Accediendo a los valores de un array dentro del objeto
+console.log(persona.musica[2]);//resultado: Rap
+
+//Modificando el array dentro del objeto
+console.log(persona.musica.push("Jazz")); //resutlado: 4 devuelve tamaño actual del vector 
+
+console.log(persona.musica); //resultado Array(4) [ "trance", "rock", "Rap" , "Jazz"]
+
+
+//Objetos dentro de objetos
+//accedemos al contenido de ese objeto
+
+console.log(persona.hogar.ciudad); //resultado: Cordoba
+
+
+//Funciones dentro de objetos
+
+console.log(persona.nacimiento()); //resultado : 1998
+
+
+
+---------------------------------------
+Creando arreglos de objetos
+
+-------------------------------------
+
+//Arreglo de objetos
+
+const autos=[
+      {modelo:"Mustang",motor:"6.0"},
+      {modelo:"Camaro",motor:"6.1"},
+      {modelo:"Challenger",motor:"6.3"},
+];
+
+//La variable const nos permite modificar los objetos, añadir o eliminar lo que no nos permite es rediseñar ese objeto:
+autos={saludo:"hola"};  //Error:TypeError: invalid assignment to const 
+
+
+console.log(autos); //Resultado:
+/*
+(3) […]
+​
+0: Object { modelo: "Mustang", motor: "6.0" }
+​
+1: Object { modelo: "Camaro", motor: "6.1" }
+​
+2: Object { modelo: "Challenger", motor: "6.3" }
+​
+length: 3
+*/
+
+for(let i=0; i<autos.length;i++){
+      console.log(`${autos[i].modelo} ${autos[i].motor}`);
+}
+
+
+----------------------------------------
+Funciones en Javascript
+---------------------------------------
+
+
+

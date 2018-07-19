@@ -1,52 +1,64 @@
-const numero1="50",
-      numero2=10,
-      numero3="tres";
+//Function declaration
+
+// function saludar(){
+//       console.log("Hola Miguel");
+// }
+
+// saludar();
 
 
-console.log(numero1+numero2);
+function saludar(nombre){
+      console.log(`Hola ${nombre}`);
+}
+
+saludar("Ana");//resultado: Hola Ana
+saludar("Juan");//resutlado:Hola Juan
 
 
-//Principal motivo para pasar de un string a un numero es por ejemplo esto:
-console.log(numero1+numero2);// resultado: 5010
+function sumar(a,b){
+      console.log(a+b);
+}
 
-//Tenemos que pasarlo a un entero: parseInt()
+sumar(1,2);
+sumar(3,4);
 
-console.log(parseInt(numero1)+numero2); //Resultado correcto: 60
+//funciones con retorno
+let suma;
+function sumar(a,b){
+      return a+b;
+}
 
-    //Por el contrario en la resta no hace falta
-    console.log(numero1-numero2); //Resultado correcto
-
-    let dato;
-    dato=Number("20");
-
-    console.log(typeof(dato));
-    
-    dato=20.0454512121
-
-    console.log(dato.toFixed(2));//20.05
-    console.log();
+suma=sumar(1,2);
+console.log(suma); //resutlado:3
+suma=sumar(3,4);
+console.log(suma);//resultado: 7
 
 
 
-    let cp;
+//Valores por defecto
+      //valores por defecto. Forma vieja
 
-    cp=90210;
-    //Los datos tipo number no se pueden contar el numero de digitos
-    console.log(cp.length); //resultado:  undefined
+      //Tipo de funcion: function declaration. POr la forma en declarar las  funciones
+function saludar(nombre){
+      if(typeof nombre === undefined){
+            nombre="Visitante";
+      }
+      return `hola ${nombre}`;
+}
 
-    let dato="4"+"4";
-      console.log(dato.length);//resultado:2 , porque contiene 2 letras
+      //Valores por defecto.Forma nueva
 
-      dato=true; //booleano
-      console.log(dato.length);//resultado: undefined
+      function saludar(nombre="Visitante"){
+            return `hola ${nombre}`;
+      }
 
-      //Convirtiendo a tipo string: String()
 
-      console.log(String(dato).length);//Resultado: 4;
+      //Funtion expression. Delcaracion de la funcion en una variable. Es lo mas nuevo
 
-      //toString();
-      dato=555;
-      dato=dato.toString();
-      console.log(dato.length);//resultado: 3
+      const suma =function(a=3,b=4){
+            return a+b;
+      }
 
-      Ya es un string por lo tanto puede usar todos los metodos de los string
+      console.log(suma(1,2));
+
+      console.log(suma(5));
