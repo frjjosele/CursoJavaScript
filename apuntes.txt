@@ -462,7 +462,332 @@ for(let i=0; i<autos.length;i++){
 ----------------------------------------
 Funciones en Javascript
 ---------------------------------------
+----------------------------------------------
+Mas tipo de funciones: IIFE. funciones que se declaran y se ejecutan inmediatamente
+---------------------------------------------
+//IIFE
+(function(tecnolodia){
+    console.log(`Aprendiendo ${tecnolodia}`);
+})("Javascript");
 
+
+//Metodos de propiedad
+//cuadno una funcion se pone dentro de un objeto
+const musica={
+    reproducir: function(id){
+        console.log(`Reproduciendo musica ${id}`);
+    },
+
+    pausar: function(){
+        console.log(`Pause a la musica`);
+    }
+}
+
+musica.reproducir(50); //salida->Reproduciendo musica 50
+
+musica.pausar();// salida-> Pause a la musica
+
+
+//Los metodos tambien pueden guardarse/crearse fuera del objeto
+
+musica.borrar=function(id){
+    console.log(`Borrando la canción con el Id: ${id}`);
+}
+
+musica.borrar(2) //salida->Borrando la canción con el Id: 2
+
+-------------------------------------------------------------
+Manejando los errores con Try Catch
+------------------------------------------------------------
+Se usa solo en funciones que tenemos dudas si nos da un error no hace falta hacer todo nuestro codigo con try{}catch{}. 
+No es bueno cuando queremos insertar algo en nuestro html, crear clases...
+
+
+function obtenerClientes(){
+    console.log('Descargando...');
+
+    setTimeout(function(){
+        console.log("Completo");
+    },3000);
+}
+
+// obtenerClientes(); //salida-> Descargando...  --> 3 segundos despues se muestra la salida: Completo
+
+
+// algo(); //esta funcion no existe por lo tanto parara la ejecucion a partir de esta parte
+
+// obtenerClientes(); //Esta funcion no se puede ejecutar por la funcion anterior
+
+
+//Funcion que no existe; 
+
+try{
+    algo();
+
+}catch(error){
+    console.log(error);
+}
+
+//salida-> ReferenceError: algo is not defined
+// Traza de la pila:
+// @http://127.0.0.1:5500/app.js:21:5
+
+obtenerClientes(); ////salida-> Descargando...  --> 3 segundos despues se muestra la salida: Completo
+
+
+------------------------------------------------------------
+Fechas
+-----------------------------------------------------------
+
+//En JS existe un objeto llamado Date
+const diaHoy=new Date();
+
+//Nos imprime la fecha y hora actual
+console.log(diaHoy); //salida-->2018-07-18T18:07:42.748Z
+
+
+let valor;
+
+//Obtenemos el mes actual
+valor=diaHoy.getMonth();
+
+console.log(valor);//salida--> 6 //Enero=0 Diciembre=11
+
+//Obtenemos el dia actual
+
+valor=diaHoy.getDate();
+console.log(valor);
+
+
+//Obtenemos el año actual
+
+valor=diaHoy.getFullYear();
+console.log(valor);//salida -->2018
+
+//Obtenemos los minutos de la hora actual
+valor=diaHoy.getMinutes();// salida--> 33 por   que son las 15:33
+console.log(valor);
+
+//Obtenemos la hora actual
+valor=diaHoy.getHours();
+console.log(valor);//salida --> 15 porque son las 15:35
+
+
+//Pueden ser util, para hacer una aplicacion de cuanto ha durado la rutina de ejercicio de una persona. Obtenemos la hora de inicio y minutos y obtenemos la hora y minutos finales y hacemos la diferencia y con eso obtenemos el tiempo que ha estado
+
+
+ //Milisegundos desde hoy hasta el 1970
+
+ valor=diaHoy.getTime();
+
+ console.log(valor); //salida--> 1531937841590
+
+
+ //modificar o añadir algun valor.
+
+ valor=diaHoy.setFullYear(2015);
+valor=diaHoy.getFullYear();
+
+console.log(valor); //saldia--> 2015
+
+/*----------------------------------------------------
+Estruturas de control: IF, ELSE, ELSEIF
+-----------------------------------------------------*/
+//Operador Ternario
+
+const logueado=true;
+
+console.log(logueado===true ? 'Si se logueo': 'No se logueo');
+
+
+
+-------------------------------------------------------------
+forEch Map e forIn
+-------------------------------------------------------------
+const pendientes=['Tarea','Comer','Proyecto','Aprender JS'];
+
+//forEach, recorrer arreglos
+/*
+forEach(function(valorArray,indiceArray){
+   
+});
+*/
+
+pendientes.forEach(function(pendiente,index){
+    console.log(`${index}: ${pendiente}`);
+});
+
+//salida:
+// 0: Tarea  app.js:11:5
+// 1: Comer  app.js:11:5
+// 2: Proyecto  app.js:11:5
+// 3: Aprender JS
+
+
+//Map para recorrer un arreglo de objetos. Devulve un array
+
+const carrito=[
+    {id:1,producto:'libro'},
+    {id:2,producto:'Camisa'},
+    {id:3,producto:'Guitarra'},
+    {id:4,producto:'Disco'}
+
+];
+
+const nombreProducto=carrito.map(function(carrito){
+    return carrito.producto;
+});
+
+console.log(nombreProducto); //SALIDA--> Array [ "libro", "Camisa", "Guitarra", "Disco" ]
+
+
+const automovil={
+    modelo: "Camaro",
+    motor: 6.1,
+    anio:1969,
+    marca: "Chevrolet"
+}
+
+for (let auto in automovil){
+    console.log(`${auto}: ${automovil[auto]}`);
+}
+
+//salida
+modelo: Camaro  app.js:46:5
+motor: 6.1  app.js:46:5
+anio: 1969  app.js:46:5
+marca: Chevrolet
+
+-------------------------------------------------------------
+window Object
+------------------------------------------------------------
+//en la consola del navegador ponemos: window y nos mostrara todos los objetos y los metodos de window
+
+let altura,
+    anchura;
+
+
+//Altura y anchura del navegador
+altura=window.outerHeight;
+anchura=window.outerWidth;
+
+console.log(altura); //salida--> 744
+console.log(anchura); //slaida--> 1382
+
+//Anchura y altura de la ventana
+altura=window.innerHeight;
+anchura=window.innerWidth;
+console.log(altura); //salida--> 629
+console.log(anchura); //slaida--> 1366
+
+
+//ubicacion
+let ubicacion;
+ubicacion=window.location;
+
+console.log(ubicacion);//salida nos devuevle un objeto muy extenso
+
+ubicacion=window.location.host;
+console.log(ubicacion);//127.0.0.1:5500
+
+
+//history
+
+window.history.go(-2); //retrocede 2 paginas anteriores de nuestro historial
+
+//Navigator; Nos muestra la informacion de nuestro navegador
+
+ubicacion=window.navigator;
+console.log(ubicacion);
+//salida
+// Navigator { permissions: Permissions, mimeTypes: MimeTypeArray, plugins: PluginArray, doNotTrack: "1", oscpu: "Windows NT 10.0; WOW64", vendor: "", vendorSub: "", productSub: "20100101", cookieEnabled: true, buildID: "20180621064021" }
+
+ubicacion=window.navigator.appName;
+console.log(ubicacion); //salida Netscape
+
+ubicacion=window.navigator.appVersion;
+console.log(ubicacion);//salida 5.0 Window
+
+//Se peude usar para saber que lenguaje tiene el navegador y asi poder redireccionar al usuario a otro lenguaje
+ubicacion=window.navigator.language;
+console.log(ubicacion); //salida--> es-ES
+
+
+--------------------------------------------------------------
+Scope
+-------------------------------------------------------------
+La visibilidad que tiene una variable objeto o clase dentro del codigo JS
+
+
+//globales, ya que noi estand entro de ninigun bloque (bucle, condicional), funcion 
+var a='a';
+let b='b';
+const c='c';
+
+
+
+console.log('Globales: '+a,b,c);
+
+
+//Scope de la funcion
+function funcionScope(){
+    var a='A';
+    let b='B';
+    const c='C';
+    console.log('funcion: '+a,b,c);
+}
+
+funcionScope();
+
+console.log('Globales: '+a,b,c);
+
+//Scope de Bloque{}, let y const estara disponible solo en aquel que este entre las llaves. var si modificara todo
+
+if(true){
+    var a='AA';
+    let b='BB';
+    const c='CC';
+    console.log('Bloque: '+a,b,c);
+
+}
+for(var a=0;a<10;a++){
+    console.log(a);
+}
+
+console.log('Globales: '+a,b,c);
+
+for(let b=0;b<10;b++){
+    console.log(b);
+}
+console.log('Globales: '+a,b,c);
+
+//salida
+Globales: a b c  app.js:8:1
+funcion: A B C  app.js:16:5
+Globales: a b c  app.js:21:1
+Bloque: AA BB CC  app.js:29:5
+0  app.js:33:5
+1  app.js:33:5
+2  app.js:33:5
+3  app.js:33:5
+4  app.js:33:5
+5  app.js:33:5
+6  app.js:33:5
+7  app.js:33:5
+8  app.js:33:5
+9  app.js:33:5
+Globales: 10 b c  app.js:36:1
+0  app.js:39:5
+1  app.js:39:5
+2  app.js:39:5
+3  app.js:39:5
+4  app.js:39:5
+5  app.js:39:5
+6  app.js:39:5
+7  app.js:39:5
+8  app.js:39:5
+9  app.js:39:5
+Globales: 10 b c
 
 
 ---------------------------------------
@@ -476,6 +801,422 @@ Podemos seleccionar un nodo y agregarle texto...
 -------------------------------------------
 Primeros pasos con DOM y Scriping
 -------------------------------------------
+elemento=document.all;
+elemento=document;
+HTMLAllCollection 
+elemento=document.forms[0].classList;
+elemento=document.forms[0].classList[0];
+
+elemento=document.forms[0].className;
+
+DOMTokenList [ "formulario", "clase2", "clase3" ];
+
+//Transformar un HTMLCollection en un array (Array.from(HTMLCollection))
+
+
+
+
+let elemento;
+elemento=document;
+
+console.log(elemento);
+
+elemento=document.all;
+console.log(elemento);
+//salida--> HTMLAllCollection { 0: <html>, 1: <head>, 2: <meta>, 3: <meta>, 4: <meta>, 5: <title>, 6: <link>, 7: <link>, 8: <link>, 9: <style>, 215 más… }; nos devuevle todos los elementos del document de la pagina actual, como si de un array se tratase
+
+elemento=document.head;
+console.log(elemento);//salida--> <head> con todos sus atributos
+elemento=document.body;
+console.log(elemento); //salida--> <body>; nos devuvle el objeto body actual.
+
+elemento=document.domain;
+console.log(elemento); //salida-->127.0.0.1
+
+elemento=document.forms;
+console.log(elemento); //salida--> HTMLCollection [ <form#busqueda.formulario.clase2.clase3> ], todos los formularios como de un array se tratase
+
+elemento=document.forms[0];
+console.log(elemento);//salida--> nos devuelve el form 0
+
+elemento=document.forms[0].id;
+console.log(elemento);//salida--> busqueda ; es el id del primer formalrio
+
+elemento=document.forms[0].className;
+console.log(elemento); //salida--> formulario clase2 clase3 ;nos deuvle todas las clases de ese formulario
+elemento=document.forms[0].classList;
+console.log(elemento);//salida --> DOMTokenList [ "formulario", "clase2", "clase3" ]; el DOMTokenList  nos da las clases en un array para que podamos acceder a ellas a traves de su posicion
+
+elemento=document.forms[0].classList[0];
+console.log(elemento); //salida--> formulario; es la priumera clase del primer formulario
+
+elemento=document.images;
+console.log(elemento); //salida--> HTMLCollection [ <img#logo>, <img#img-carrito>, <img>, <img>, <img.imagen-curso.u-full-width>, <img>, <img.imagen-curso.u-full-width>, <img>, <img.imagen-curso.u-full-width>, <img>, 18 más… ] NOs devuevle todas las imagenes en un HTMLCollection
+
+elemento=document.images[2].src;
+console.log(elemento);//salida--> "http://127.0.0.1:5500/img/curso1.jpg"
+
+elemento=document.images[2].getAttribute('src');
+console.log(elemento);//saldia--> img/curso1.jpg
+
+
+
+//Transformar un HTMLCollection en un array (Array.from(HTMLCollection))
+let imagenes=document.images;
+
+let imagenesArr=Array.from(imagenes);
+
+console.log(imagenesArr);//salida-->Array [ <img#logo>, <img#img-carrito>, <img>, <img>, <img.imagen-curso.u-full-width>, <img>, <img.imagen-curso.u-full-width>, <img>, <img.imagen-curso.u-full-width>, <img>, 18 más… ]
+
+
+
+-------------------------------------------------
+Seleccionando elementos y aplicando propiedades
+-------------------------------------------------
+document.getElementById('id_del_elemento'); //obtenemos un elemento html a partir de su id
+
+//Obtenemos el texto: textContent or innerText
+elemento=document.getElementById('encabezado').textContent;
+
+elemento=document.getElementById('encabezado').innerText;
+
+//Propiedades css
+document.getElementById('encabezado').style.propiedad;
+//modificar propiedad css
+document.getElementById('encabezado').style.propiedad="modificar";
+
+let elemento;
+
+elemento=document.getElementById('header');
+
+console.log(elemento);//salida--><header id="header" class="header">
+
+elemento=document.getElementById('header').className;
+console.log(elemento);//salida-->header  clase del elemento header
+
+//Obtenemos el texto
+elemento=document.getElementById('encabezado').textContent;
+console.log(elemento);//salida-->Cursos en linea
+elemento=document.getElementById('encabezado').innerText;
+console.log(elemento);//salida--> Cursos en linea
+
+
+//Modificar el css u obtener el css
+
+let encabezado;
+
+encabezado=document.getElementById('encabezado');
+
+encabezado.style.background="#333";
+encabezado.style.color='#fff';
+encabezado.style.padding='20px';
+
+encabezado.innerText="Los mejores Cursos";
+
+
+----------------------------------------------------
+Seleccionando un elemento en JS
+--------------------------------------------------
+ getElementById(); querySelector();
+querySelector  es igual que  getElementById() pero Ademas permiten usar propiedades de css para seleccionar elementos
+
+//query selector: funciona igual que el getElementById(); pero querySelector puede ir a por una:
+-clase. Cuando hay varias clases solo selecciona la 1º clase.
+-etiquetas.
+-id
+-Seleccionamos una clase
+const encabezado=document.querySelector('.card img');
+
+-Usamos css3 para seleccionar elementos:
+//query selector
+let enlace;
+
+//Primer hijo a:first-child
+enlace=document.querySelector('#principal a:first-child');
+
+
+//ultimo hijo a:last-child
+enlace=document.querySelector('#principal a:last-child');
+
+
+//hijo en mitad a:nth-child(3)
+enlace=document.querySelector('#principal a:nth-child(3)');
+
+
+//query selector con un id
+const encabezado=document.querySelector('#encabezado'); 
+
+//query selector con una clase
+const encabezado=document.querySelector('.encabezado');
+
+
+
+--------------------------------------------------
+Seleccionando multiples elementos document.querySelectorAll();
+-----------------------------------------------------
+document.querySelectorAll(); document.getElementsByClassName("enlace"); document.getElementsByTagName('a');
+
+//Nos devuelve en un HTMLCollection todos los elementos que tengan esa clase. Para usar forEach debemos de pasar el HTMLCollection a un array
+document.getElementsByClassName("enlace");
+
+//Nos devuelve en un aray todos los elementos que hemos especificado. POdemos usar forEach 
+document.querySelectorAll();
+
+//Todas las etiquetas. nos muestra una HTMLCollection.
+Para usar forEach debemos de pasar el HTMLCollection a un array
+const listaEnlaces=document.getElementsByTagName('a');
+
+//Modificando un elemento del array
+enlaces=document.getElementsByClassName("enlace")[3];
+enlaces.style.background="#333";
+
+//Mezclando selectores
+const listaEnlaces=document.querySelector("#principal").getElementsByClassName('enlace');
+
+console.log(listaEnlaces); //salida-->HTMLCollection [ <a.enlace>, <a.enlace>, <a.enlace>, <a.enlace>, <a.enlace> ]
+
+//**************** FIN getElementsByTagName()******
+
+
+//******************************getElementsByTagName()******
+
+//Todos los elementos
+const listaEnlaces=document.getElementsByTagName('a');
+
+console.log(listaEnlaces); //salida-->HTMLCollection [ <a.borrar-curso>, <a.borrar-curso>, <a#vaciar-carrito.button.u-full-width>, <a.u-full-width.button-primary.button.input.agregar-carrito>, <a.u-full-width.button-primary.button.input.agregar-carrito>, <a.u-full-width.button-primary.button.input.agregar-carrito>, <a.u-full-width.button-primary.button.input.agregar-carrito>, <a.u-full-width.button-primary.button.input.agregar-carrito>, <a.u-full-width.button-primary.button.input.agregar-carrito>, <a.u-full-width.button-primary.button.input.agregar-carrito>, 13 más… ]
+
+//Pasamos el HTMLCollection a un array
+let enlaces=Array.from(listaEnlaces);
+
+enlaces.forEach(function(enlace){
+    console.log(enlace.textContent);
+});
+
+
+
+//******************************querySelectorAll***********
+
+const enlaces=document.querySelectorAll('#principal .enlace');
+
+console.log(enlaces);//salida--> NodeList [ <a.enlace>, <a.enlace>, <a.enlace>, <a.enlace>, <a.enlace> ]
+
+enlaces.forEach(function(enlace){
+    console.log(enlace.textContent);
+});
+
+
+const enlaces=document.querySelectorAll('#principal a:nth-child(odd)'); //odd seleccionamos todos los impares
+
+console.log(enlaces);//salida--> NodeList [ <a.enlace>, <a.enlace>, <a.enlace> ]
+
+enlaces.forEach(function(enlace){
+    enlace.style.background="red";
+});
+
+//**********************FIN querySelectorAll***********
+
+
+--------------------------------------------------
+Traversing en JS
+------------------------------------------------
+Como interacciona JS con un elemento con otro.
+Nos permite navegar a lo largo del document. Desde el padre hacia el hijo, saltarte un elemento... Volver hacia el padre, etc
+
+//children --> poriedad que devuelve un HTMLCollection con todos los hijos De un elemento que digamos
+
+const navegacion=document.querySelector('#principal');
+
+console.log(navegacion.children);//saalida--> HTMLCollection [ <a.enlace>, <a.enlace>, <a.enlace>, <a.enlace>, <a.enlace> ]
+
+
+//nodeType -> nos devulve el tipo de nodo numerico que es ese nodo.
+
+1=elementos HTML h1,h2,a,div...
+2=atributos
+3= text nodeType
+8=comentarios
+9=Documentos
+10=doctype
+
+const navegacion=document.querySelector('#principal');
+
+console.log(navegacion.children[0].nodeType);//saalida--> 1 , significa que es un enlace
+
+
+
+-------------------------------------------
+Traversing en JS del hijo hacia el padre y los primos
+------------------------------------------
+parentElement; previousElementSibling; nextElementSibling
+
+const enlaces=document.querySelectorAll('.enlace');
+
+console.log(enlaces[0].parentElement);
+
+//Podemos ir hasta arriba miestras el apdre me los permita
+console.log(enlaces[0].parentElement.parentElement.parentElement);
+
+
+const cursos=document.querySelectorAll('.card');
+
+console.log(cursos[0].parentElement.parentElement);
+
+//Accediendo a los primos
+console.log(cursos[0].parentElement.parentElement.children[0].textContent="Hola");
+
+const enlaces=document.querySelectorAll('.enlace');
+
+//previousElementSibling. sube hasta su hermano anteior. Es importante que tiene que estar al mismo nivel es decir ser su hermano
+console.log(enlaces[4].previousElementSibling.previousElementSibling);
+
+//nextElementSibling, recorre los nosdos que esten al mismo nivel. Es decir a  solo llega a recorrerer a sus hermanos, que estan despues de el
+console.log(enlaces[0].nextElementSibling.nextElementSibling);
+
+console.log(enlaces[0].nextElementSibling.nextElementSibling.parentElement.children[4]);
+
+
+--------------------------------------------------
+Creando elementos de JS
+------------------------------------------------
+appendChild(); createElement(); document.createTextNode()
+
+//crear enlace
+
+//createElement -> creamos la etiqueta
+const enlace=document.createElement('a');
+
+//agregamos una clase
+enlace.className="enalce";
+
+//Añadir id
+enlace.id="nuevoId";
+
+//atributo de href
+enlace.setAttribute('href','#');
+
+//Añadir texto
+enlace.textContent="Nuevo enlace";
+    //Otra forma de añadir texto
+enlace.appendChild(document.createTextNode('Nuevo enlace'));
+
+
+//agregamos al html
+document.querySelector("#secundaria").appendChild(enlace);
+
+console.log(enlace);
+
+
+
+-------------------------------------------------
+Reemplazando elementos
+
+----------------------------------------------------
+elPadre.replaceChild(nuevoElemento,elementoantiguo);
+
+const nuevoEncabezado=document.createElement('h2');
+
+//agregar un id
+
+nuevoEncabezado.id="encabezado";
+
+//agregar un texto
+
+nuevoEncabezado.appendChild(document.createTextNode('Los mejores Cursos'));
+
+//elemento anterior se reemplaza
+
+const anterior=document.querySelector('#encabezado');
+
+//Obtenemos el padre del elemento anterior
+
+const elPadre=document.querySelector('#Lista-cursos');
+
+//Reeamplazar
+
+elPadre.replaceChild(nuevoEncabezado,anterior);
+
+console.log(nuevoEncabezado);
+
+
+
+----------------------------------------------
+Eliminar nodos usando JS
+
+----------------------------------------------
+*****************Borrar elementos html********************
+
+//remove()--->borrar elementoHtml: selectorElemento.remove();
+
+//removeChild()--->borrar elemento desde el padre: selectorPadre.removeChild(selectorHijo);
+
+/***********************Clases***********************
+//borrar clase
+//remove('nueva-clase'): selectorHtml.classList.remove('nueva-clase');
+
+//añadir clase
+
+//add('nueva-clase'): selectorHtml.classList.add('nueva-clase');
+
+
+/*******************Atributos**********************
+
+//leer atributos
+//getAttribute('atributo'): selectorHtml.getAttribute('atributo')
+
+//modificar atributos
+//setAttribute('atributoAmodificar','nuevoValor'):
+selectorHtml.setAttribute('atributoAmodificar','nuevoValor');
+
+//comprobar que exista el atributo. true si existe; false si no existe
+//hasAttribute('atributo'): selectorHtml.hasAttribute('atributo')
+primerLi.hasAttribute('data-id');
+
+//Eliminar atributos
+//removeAttribute('atributo'): selectorHtml.removeAttribute('atributte');
+
+*********************************************
+
+const enlaces=document.querySelectorAll('.enlace');
+
+const navegacion=document.querySelector('#principal');
+
+//Podemos borrarlo desde su selector
+enlaces[0].remove();
+
+
+//Podemos borrarlo desde el padre. Usamos removeChild(selector);
+
+navegacion.removeChild(enlaces[1]);
+
+
+//Borrar clases o atributos
+
+const primerLi=document.querySelector('.enlace');
+let elemento;
+
+//Añadir o eleminar clases, atributos, etc
+elemento=primerLi.classList.add('nueva-clase');
+elemento=primerLi.classList;
+elemento=primerLi.classList.remove('nueva-clase');
+elemento=primerLi.classList;
+
+//leer atributos
+elemento=primerLi.getAttribute('href'); //salida--> #
+//modificar atributos
+primerLi.setAttribute('href','http://facebook.com');
+
+primerLi.setAttribute('data-id',20);
+
+//comprobar que exista el atributo
+
+primerLi.hasAttribute('data-id');
+
+//eliminar un atributo
+primerLi.removeAttribute('data-id');
+
+elemento=primerLi;
+console.log(elemento);
+
 
 
 
