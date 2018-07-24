@@ -1,4 +1,4 @@
-console.time("nombre del time");
+﻿console.time("nombre del time");
 console.timeEnd("nombre del time");
 
 console.warn("cadena de texto");//muestra el mensajes tipo warning
@@ -70,7 +70,7 @@ split(" ")
 
 indexOf('va')
 
-repeat(-10)
+repeat(10)-> error cuando el numero indicado es negativo o es casi infitino
 
 includes('php')
 
