@@ -62,9 +62,9 @@ Metodos de String
 
 toUpperCase()
 
-slice(2,4)
-slice(-5)
-slice(10,-5)
+slice(2,4) //devuelve una copia de una parte del array dentro de un nuevo array empezando por inicio hasta fin (fin no incluido). El array original no se modificará.
+slice(-5)--> devuelve las 5 ultimas letras
+slice(10,-5)-->devuelve un string que parte desde la posicion 10, hasta la letra número 5 empezando desde el final.
 
 split(" ")
 
@@ -84,7 +84,7 @@ console.log(tecnologia.substring(0,11));//Me gusta ap
 
 console.log(tecnologia.slice(2,4));//g
 console.log(tecnologia.slice(-5));//cript-> cuenta desde el final y solo  letras
-console.log(tecnologia.slice(10,-5));//prender Javas--> cuanta desde la letra numero  del final hasta 10 letras siguientes
+console.log(tecnologia.slice(10,-5));//prender Javas-->parte desde la posicion 10, hasta la letra número 5 empezando desde el final.
 
 
 console.log(tecnologia.split(" "));//Array [ "Me", "gusta,", "aprender", "Javascript" ]--> convierte en un array a partir de un separador como es el espacio
