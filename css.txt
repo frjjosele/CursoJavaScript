@@ -16,3 +16,106 @@ font-family: monospace; Indica el tipo de letra
 
 <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css"> : libreria de google para el tipo de letra
 
+boder-style: solid; crea un borde, (solid es una linea seguida)
+boder-color: red; color del borde, para que funcione debe de existir boder-style
+boder-width:10px; grsor del boder, para que funcione debe de existir boder-style
+
+boder-radius: 10px ó %; hace las esquinas redondeadas dependiendo de los px;ara que funcione debe de existir boder-style
+border-radius:50%; crea un circulo con la imagen o el div
+
+
+background-color: red; color de fondo
+
+padding: El padding controla la cantidad de espacio entre el contenido del elemento y su borde.
+
+padding: 10px 20px 10px 20px;
+Este es el orden: top,rigth,bottom,left
+padding-top: 10px;
+ padding-right: 20px;
+  padding-bottom: 10px;
+    padding-left: 20px;
+
+Cuando aumenta el relleno (padding) del cuadro azul, aumentará la distancia (relleno) entre el texto y el borde a su alrededor.
+
+margin: El margin (margen) de un elemento controla la cantidad de espacio entre el borde de un elemento y los elementos circundantes.
+Cuando aumenta el (margin) margen del cuadro azul, aumentará la distancia entre su borde y los elementos circundantes.
+
+Si establece el margen de un elemento en un valor negativo, el elemento crecerá.
+
+margin: 10px 20px 10px 20px;
+orden: margin-top, margin-right, margin-bottom, and margin-left
+
+[attr=value]{
+	margin: 20px;
+} por ejemplo: [type="radio"]{margin: 20px}
+
+em or rem : Las unidades relativas, como em o rem, son relativas a otro valor de longitud. Por ejemplo, em se basa en el tamaño de la fuente de un elemento. Si lo usa para establecer la propiedad de tamaño de fuente en sí, es relativo al tamaño de fuente del padre.
+
+Nota
+Hay varias opciones de unidades relativas que están vinculadas al tamaño de la ventana gráfica. Están cubiertos en la sección Principios de diseño web adaptativo.
+
+-----------Colores-------------------
+El dígito 0 es el número más bajo en código hexadecimal y representa una ausencia completa de color.
+
+El dígito F es el número más alto en código hexadecimal y representa el brillo máximo posible.
+
+
+Dodger Blue	#1E90FF
+Green	#00FF00
+Orange	#FFA500
+Red	#FF0000
+
+Por ejemplo, el código hexadecimal rojo # FF0000 se puede acortar a # F00. Esta forma abreviada da un dígito para el rojo, un dígito para el verde y un dígito para el azul.
+
+Esto reduce la cantidad total de colores posibles a alrededor de 4,000. Pero los navegadores interpretarán # FF0000 y # F00 exactamente del mismo color.
+
+Cyan	#0FF
+Green	#0F0
+Red	#F00
+Fuchsia	#F0F
+
+Color	RGB
+Blue	rgb(0, 0, 255)
+Red	rgb(255, 0, 0)
+Orchid	rgb(218, 112, 214)
+Sienna	rgb(160, 82, 45)
+
+---------------Variables en css----
+Para crear una variable CSS, solo necesita darle un nombre con dos guiones delante y asignarle un valor como este:
+
+    --penguin-skin: gris;
+
+Esto creará una variable llamada --penguin-skin y le asignará el valor de gris.
+
+Ahora puede usar esa variable en cualquier lugar de su CSS para cambiar el valor de otros elementos a gris.
+
+.penguin {
+    
+     
+ --penguin-skin: gray;
+}
+
+//Usando la variable
+
+.penguin-top {
+
+	background:var (--penguin-skin);
+
+  }
+
+En caso de que el navegador no sea compatible para crear las variables con css
+background: var(--penguin-skin, black);
+
+Scope de las varibles en css:
+Cuando crea una variable, está disponible para que la use dentro del elemento en el que la creó. También se vuelve disponible dentro de cualquier elemento anidado dentro de él. Este efecto se conoce como cascada.
+
+Debido a la cascada, las variables de CSS a menudo se definen en el elemento raíz (:root).
+
+Puede pensar en: el elemento raíz como un contenedor para todo su documento HTML, de la misma manera que un elemento html es un contenedor para el elemento del cuerpo.
+
+Al crear sus variables en: root, estarán disponibles en toda la página web.
+
+:root {
+ 
+	--penguin-belly:pink;
+}
