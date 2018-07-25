@@ -1,0 +1,18 @@
+style="color:blue"; cambia el color del texto. Lo podemos incluir en un direcmtente en un <h> o<p> o en el div que contenga esos <h> o <p>.
+
+<style>
+  
+h2{
+    
+   color:blue;
+ 
+ }
+
+</style>
+
+style: font-size:30px; Tamaño del texto
+
+font-family: monospace; Indica el tipo de letra
+
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css"> : libreria de google para el tipo de letra
+
