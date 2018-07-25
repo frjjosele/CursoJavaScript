@@ -1,0 +1,60 @@
+-----Movernos a traves de la pagina mediante click------
+<a href="#contacts-header">Contacts</a>
+...
+<h2 id="contacts-header">Contacts</h2>
+
+al hacer click en el enlace, el navegador nos situara en el h2
+
+<a target="_blank">: al hacer click se abre una nueva ventana en el navegador
+
+
+<ul><li></li></ul>: lista desordenada
+
+<ol><li></li></ol>: lista ordenada
+
+
+input: required--> propiedad que nos indica que debe ser rellenado para poder enviar los datos
+
+<form action="direccion"></form>--> boton type="submit", envia datos a la direccion que contenga el atributo action. Esta accion es por defecto para los botones type=submit
+
+radio button:     tienen que tener todos el mismo name. , el radio button no permite ser desmarcado. 
+Una vez seleccionado un radio button, solo se desmarcará si se selecciona otro radio button del mismo grupo
+<form>
+    <fieldset>
+        <legend>Elige un color</legend>
+        <label>
+            <input type="radio" name="color" value="azul"> Azul
+        </label>
+        <label>
+            <input type="radio" name="color" value="negro"> Negro
+        </label>
+        <label>
+            <input type="radio" name="color" value="amarillo"> Amarillo
+        </label>
+    </fieldset>
+    <fieldset>
+        <legend>Elige un número</legend>
+        <label>
+            <input type="radio" name="numero" value="1"> 1
+        </label>
+        <label>
+            <input type="radio" name="numero" value="2"> 2
+        </label>
+        <label>
+            <input type="radio" name="numero" value="3"> 3
+        </label>
+        <label>
+            <input type="radio" name="numero" value="3"> 4
+        </label>
+    </fieldset>
+</form>
+
+
+input type: checkbox; --> deben de llevar el mismo name. Lo que los diferencia al igual que los boton es el value, pero el name simepre es el mismo para el mismo grupo
+ <form action="/action_page.php">
+  <input type="checkbox" name="vehicle" value="Bike"> I have a bike<br>
+  <input type="checkbox" name="vehicle" value="Car" checked> I have a car<br>
+  <input type="submit" value="Submit">
+</form> 
+
+input: checked; <input type="radio" checked>--> marca el input como si estuviera seleccionado. Sirve para marcar opciones por defecto.

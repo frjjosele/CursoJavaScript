@@ -1,0 +1,38 @@
+div: container-fluid
+img: img-responsive
+h2(heading): text-center
+button class="btn btn-default" "btn btn-bloc"(Al hacer que bloqueen elementos con la clase adicional de btn-block, su botón se extenderá para ocupar todo el espacio horizontal de la página y cualquier elemento que lo siga fluirá a una "nueva línea" debajo del bloque.)
+button: "btn primary" (La clase btn-primary es el color principal que usarás en tu aplicación. Es útil para resaltar las acciones que desea que realice su usuario.
+btn-primary sustituye a btn-default).
+Button: btn-info
+button: btn-danger
+
+Lo ideal es acompañar a los botones añadir siempre btn y siqueremos ocupar todo el ancho btn-block
+
+div: row; col-xs-(number)
+
+h2,h1,...: text-primary
+
+span: text-danger
+
+span y <i>(tambien es cursivo) para los favicons:<i class="fa fa-info-circle"></i>
+
+
+<!-- Un simple ejemplo de un label con el atributo for -->
+<label for="Name">Click me</label>
+<input type="text" id="Name" name="Name" />
+
+<!-- Aun mas simple -->
+<label>Click me <input type="text" id="Name" name="Name" /></label>
+
+form-control: Todos los elementos textuales <input>, <textarea> y <select> con la clase .form-control tienen un ancho del 100%.
+
+div: well,  puede crear una sensación visual de profundidad para sus columnas. Se puede usar en cualquier sitio pero lo normal es estar debajo de los  col-xs-number      <div class="col-xs-6">
+      <div class="well">
+      </div>
+
+    </div>
+
+target: No todas las clases necesitan tener el CSS correspondiente. Algunas veces creamos clases solo con el propósito de seleccionar estos elementos más fácilmente usando jQuery.
+
+
