@@ -181,3 +181,47 @@ function eliminarElemento(e){
     }
 
 }
+
+
+
+----------------------------------------------------------------
+LOCAL STORE
+----------------------------------------------------------------
+permite añadir informacion en el navegador de nuestros visitantes, de forma permanente sin necesidad de guardarlo en la base de datos, ya que estos se almacenan en el navegador
+
+//localStorage: solo se borra cuando el usario limpie la caché, o entre en inspeccionar elemento y la borre
+o mediante un codigo js
+localStorage.setItem('key','value');--> agrega o modifica un valor en el localStorage
+localStorage.getItem('key','value');--> consulta un valor en el local store
+localStorage.removeItem('key');--> borra un valor del localStore
+localStorage.clear();--> Eliminanado todo el localStore
+
+
+//sessionStorage: se borra al cerrar el navegador
+sessionStorage.setItem('key','value');
+
+//agregar a o modificar un valor en el local storage: no se borra a no ser que el usuario entre en el store del navegador y los borre o borre la caché. Tambien lo podemos borrar usando codigo js
+localStorage.setItem('key','value');
+
+localStorage.setItem('nombre','juan');
+
+//Session Storage: session store se borra nada mas cerrar el navegador
+sessionStorage.setItem('key','value');
+sessionStorage.setItem('nombre','juan');
+
+
+//eliminando el localStorage
+localStorage.removeItem('key');
+localStorage.removeItem('nombre');
+
+
+localStorage.setItem('key','value');
+
+//consultar un valor del localStorage
+const nombre=localStorage.getItem('nombre');
+
+console.log(nombre);
+
+
+//Eliminanado todo el localStore
+localStorage.clear();
