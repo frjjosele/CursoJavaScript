@@ -41,15 +41,13 @@ function agregarTweet(e){
     //agregamos el elemento lista creado como hijo del div que contiene la lista tweet
     listaTweet.appendChild(li);
 
-        //Agregamos a este <li> (elemento de la lista), el texto del texArea
-    //tambien nos sivre:
-    //li.innerText=tweet
-    li.appendChild(document.createTextNode(tweet));
-
     //agregamos el boton borrar a la lista
     li.appendChild(borrar);
 
-
+    //Agregamos a este <li> (elemento de la lista), el texto del texArea
+    //tambien nos sivre:
+    //li.innerText=tweet
+    li.appendChild(document.createTextNode(tweet));
 
     //Añadiendo al localStorage
     agregarTweetLocalStorage(tweet);
@@ -63,10 +61,8 @@ function borrarTweet(e){
     //Esto es porque añadimos <a>X</a> una clase
 
     if(e.target.className==='borrar-tweet'){
-        e.target.parentElement.remove();
-        
-        //Eliminando el tweet correcto del localStorage
-        borrarTweetLocalStorage(e.target.parentElement.innerText);
+        console.log(e.target.parentElement.remove());
+        alert('Tweet eliminado');
     }
 }
 
@@ -128,25 +124,4 @@ function localStorageListo(){
     li.appendChild(document.createTextNode(tweet));
 
     });
-}
-
-
-
-//Borrando del localStorage
-function borrarTweetLocalStorage(tweet){
-    let tweets, tweetBorrar;
-    //Elimina la X del tweet
-    tweetBorrar=tweet.substring(0,tweet.length-1);
-    
-    tweets=obtenerTweetsLocalStorage();
-    tweets.forEach(function(tweet,index){
-        console.log('tweet',tweet);
-        console.log('tweetsBorrar',tweetBorrar);
-        if(tweetBorrar===tweet){
-            
-            tweets.splice(index,1);
-        }
-    });
-
-    localStorage.setItem('tweets',JSON.stringify(tweets));
 }

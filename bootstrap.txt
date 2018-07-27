@@ -27,6 +27,24 @@ span y <i>(tambien es cursivo) para los favicons:<i class="fa fa-info-circle"></
 
 form-control: Todos los elementos textuales <input>, <textarea> y <select> con la clase .form-control tienen un ancho del 100%.
 
+form-group: Any group of form controls Cualquier grupo de controles de formulario.
+
+div:checkbox
+ <div class="checkbox">
+  <label><input type="checkbox" value="">Option 1</label>
+</div>
+<div class="checkbox">
+  <label><input type="checkbox" value="">Option 2</label>
+</div>
+<div class="checkbox disabled">
+  <label><input type="checkbox" value="" disabled>Option 3</label>
+</div> 
+
+Las casillas de verificación se utilizan si desea que el usuario seleccione cualquier cantidad de opciones de una lista de opciones predefinidas.
+
+El siguiente ejemplo contiene tres casillas de verificación. La última opción está deshabilitada
+
+
 div: well,  puede crear una sensación visual de profundidad para sus columnas. Se puede usar en cualquier sitio pero lo normal es estar debajo de los  col-xs-number      <div class="col-xs-6">
       <div class="well">
       </div>

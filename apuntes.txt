@@ -1249,3 +1249,233 @@ function ejecutarBoton(e){
 
     console.log(e.target.innerText);
 }
+
+
+-------------------------------------------
+Event Listener
+------------------------------------------
+e.target//Obtenemos el elemnto HTML, al que pertenece ese evento. Ex: e.target.innerText="Hola".
+e.preventDefault();//se utiliza para que un evento no actue su funcionalidad por defecto. Ex: en los type=submit.
+
+addEventListener('click',function(){
+    //desarrollo de la funcion
+});
+
+funtion hola(){
+
+}
+addEventListener('click',hola);
+
+//event listener. click al buscador
+
+//1- colocamos el selector
+
+
+//forma basica: addEventListener('evento',function(){
+    //definimos la funcion
+//});
+document.querySelector('#submit-buscador').addEventListener('click',function(e){
+    //Al tratarse de un type=submit, dentro de un formulario, la funcion por defecto en todos los submit es enviar informacion al action="url", que definimos en el form. SI no queremos que haga su accion por defecto porque queremos que haga otra cosa diferente, ponemos evento.preventDefault();
+    e.preventDefault();
+    alert('buscando cursos');
+});
+
+//otra forma de hacer los addEvenListener. descirbiendo la funcion del evento fuera.
+document.querySelector('#submit-buscador').addEventListener('click',ejecutarBoton);
+function ejecutarBoton(e){
+
+    e.preventDefault();
+    let elemento;
+    elemento=e;
+    elemento=e.target;
+
+
+    alert('buscando cursos');
+}
+
+//Importante en los eventos la propiedad mas importante es el target. Ya que nos mostrará el elemento HTML, al que nos dirigimos
+
+
+
+------------------------------------------
+Otros eventos con el mouse
+------------------------------------------
+e.type: nos dice el tipo de evento que esta activado
+
+//variables
+const encabezado= document.querySelector('#encabezado');
+const enlaces=document.querySelectorAll('.enlace');
+const boton=document.querySelector('#vaciar-carrito');
+
+//click
+boton.addEventListener('click',obtenerEvento);
+
+//doble click
+boton.addEventListener('dblclick',obtenerEvento);
+
+//mouse enter, simplemnte con poner el raton sobre el elemento se activa
+
+boton.addEventListener('mouseenter',obtenerEvento);
+
+//mouse leave: cuando sales del boton con el raton
+boton.addEventListener('mouseleave',obtenerEvento);
+
+//mouse over: siempre que este arriba va a aejecuatar el codigo
+
+boton.addEventListener('mouseover',obtenerEvento);
+
+//mouse out: similar a mouse leave
+
+boton.addEventListener('mouseout',obtenerEvento);
+
+//mouse down: es lo mismo que el click, pero con cualquier click derecho o izquierdo
+
+boton.addEventListener('mousedown',obtenerEvento);
+
+//mouse up: cuando soltamos el click es cuando se ejecuta, puede ser click derecho o izquierdo
+
+boton.addEventListener('mouseup',obtenerEvento);
+
+//mouse move: todo lo que te muevas dentro de ese elemento
+boton.addEventListener('mousemove',obtenerEvento);
+
+//evento.type=nos sirve para indicarnos que tipo de evento
+function obtenerEvento(e){
+    console.log(`Evento ${e.type}`);
+}
+
+
+
+----------------------------------------
+Eventos para los input
+---------------------------------------
+
+const busqueda=document.querySelector('#buscador');
+
+
+//keydown: cada vez que pulsamos una tecla
+busqueda.addEventListener('keydown',obtenerEvento);
+
+//keyup: cada vez que soltamos una tecla presionada anteriormente
+busqueda.addEventListener('keyup',obtenerEvento);
+
+//keypress: cada vez que escribimos algo, da igual si se presiona o suelta
+
+busqueda.addEventListener('keypress',obtenerEvento);
+
+//focus: cuando entramos en el input para escribir
+
+busqueda.addEventListener('focus',obtenerEvento);
+
+//blur: se usa para validar formularios, estamos dentro del input y cuando pincah fura de ese input es cuando se activa
+
+busqueda.addEventListener('blur',obtenerEvento);
+
+//cut: cuando en un input por ejemplo cortamos el texto, seactiva este evento.
+busqueda.addEventListener('cut',obtenerEvento);
+
+//copy: se dispara cuando hayan escrito algo y al copiarlo se activara el evento
+busqueda.addEventListener('copy',obtenerEvento);
+
+//paste: pues cuando se pega algo este eventos era activado
+busqueda.addEventListener('paste',obtenerEvento);
+
+//input: este es el mas completo, ya que todo lo que se haga en el input se activara este
+busqueda.addEventListener('input',obtenerEvento);
+
+//change: este se realiza para los selectbox, cuando se hace un cambio de eleccion en el select
+
+
+
+//evento.type=nos sirve para indicarnos que tipo de evento
+function obtenerEvento(e){
+    console.log(busqueda.value);
+    console.log(`Evento ${e.type}`);
+}
+
+
+
+------------------------------------------------------------
+Event bubbling
+------------------------------------------------------
+ e.stopPropagation()--> eliminamos el bubbling 
+
+Es cuando tienes un elemento y das click en el, y a su vez otros elementos son activados o seleccionamos
+
+Esto sucede cuando hay un div con un evento, y sus div o elemtnos internos tambien tienen ese mismo evento, por lo tanto se ejecutan todos.
+
+La idea es eliminar el bubbling, para ello usamos  e.stopPropagation();
+
+
+------------------------------------------------------
+Delegation
+------------------------------------------------------
+Es una forma de comprobar que elemento esta haciendo click y actuar a conveniencia. No es una funcion en si.
+
+constains('nombre de la clase')
+
+document.body.addEventListener('click',eliminarElemento);
+
+function eliminarElemento(e){
+    e.preventDefault();
+
+    console.log('click');
+
+    console.log(e.target.classList);
+
+
+//Como hemos seleccionado el body, solo queremos que actuen sobre los elementos de la clase borrar-curso. Para eso usamos el constains('nombre de la clase') del classList
+    if(e.target.classList.contains('borrar-curso')){
+        console.log(e.target.parentElement.parentElement.remove());
+    }
+
+    if(e.target.classList.contains('agregar-carrito')){
+        console.log('curso agregado');
+    }
+
+}
+
+
+
+----------------------------------------------------------------
+LOCAL STORE
+----------------------------------------------------------------
+permite añadir informacion en el navegador de nuestros visitantes, de forma permanente sin necesidad de guardarlo en la base de datos, ya que estos se almacenan en el navegador
+
+SOlo permite almacenar JSON o string, no permite datos tipo number, bool, ni objetos. Por lo tanto hayu que realizar antes una conversion
+//localStorage: solo se borra cuando el usario limpie la caché, o entre en inspeccionar elemento y la borre
+o mediante un codigo js
+localStorage.setItem('key','value');--> agrega o modifica un valor en el localStorage
+localStorage.getItem('key','value');--> consulta un valor en el local store
+localStorage.removeItem('key');--> borra un valor del localStore
+localStorage.clear();--> Eliminanado todo el localStore
+
+
+//sessionStorage: se borra al cerrar el navegador
+sessionStorage.setItem('key','value');
+
+//agregar a o modificar un valor en el local storage: no se borra a no ser que el usuario entre en el store del navegador y los borre o borre la caché. Tambien lo podemos borrar usando codigo js
+localStorage.setItem('key','value');
+
+localStorage.setItem('nombre','juan');
+
+//Session Storage: session store se borra nada mas cerrar el navegador
+sessionStorage.setItem('key','value');
+sessionStorage.setItem('nombre','juan');
+
+
+//eliminando el localStorage
+localStorage.removeItem('key');
+localStorage.removeItem('nombre');
+
+
+localStorage.setItem('key','value');
+
+//consultar un valor del localStorage
+const nombre=localStorage.getItem('nombre');
+
+console.log(nombre);
+
+
+//Eliminanado todo el localStore
+localStorage.clear();
