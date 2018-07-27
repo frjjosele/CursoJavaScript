@@ -119,3 +119,6 @@ Al crear sus variables en: root, estarán disponibles en toda la página web.
  
 	--penguin-belly:pink;
 }
+
+
+text-align: center; justify; right;left; para alinear el texto dentro de cualquier elemento
