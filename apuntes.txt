@@ -1412,6 +1412,8 @@ Delegation
 ------------------------------------------------------
 Es una forma de comprobar que elemento esta haciendo click y actuar a conveniencia. No es una funcion en si.
 
+Es lo mejor que hay porque nos permite intereactuar con elementos dinámicos, ya que cuando queremos buscar ese elemento, ya formará parte del html. (Mirar ejemplos, en los )
+ primeros poyectos)
 constains('nombre de la clase')
 
 document.body.addEventListener('click',eliminarElemento);
